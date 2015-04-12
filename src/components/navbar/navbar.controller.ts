@@ -2,15 +2,17 @@
 
 module fireboot {
 
-  interface INavbarScope extends ng.IScope {
-    date: Date
-  }
+  @fireboot.Component({
+   templateUrl:'components/navbar/navbar.html'
+  })
+  class NavbarCtrl {
 
-  export class NavbarCtrl {
-    /* @ngInject */
-    constructor ($scope: INavbarScope) {
-      $scope.date = new Date();
+    date: Date
+
+    constructor () {
+      this.date = new Date();
     }
+
   }
 
 }

@@ -16,10 +16,12 @@ gulp.task('inject', ['styles', 'scripts'], function () {
   ], { read: false });
 
   var injectScripts = gulp.src([
+   '{' + paths.src + ',' + paths.tmp + '/serve}/app/*.js',
     '{' + paths.src + ',' + paths.tmp + '/serve}/{app,components}/**/*.js',
     '!' + paths.src + '/{app,components}/**/*.spec.js',
     '!' + paths.src + '/{app,components}/**/*.mock.js'
-  ]).pipe($.angularFilesort());
+  ])
+  // .pipe($.angularFilesort());
 
   var injectOptions = {
     ignorePath: [paths.src, paths.tmp + '/serve'],
