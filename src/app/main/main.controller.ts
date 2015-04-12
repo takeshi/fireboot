@@ -12,10 +12,15 @@ module fireboot {
     templateUrl: 'app/main/main.html'
   })
   class MainCtrl {
-    awesomeThings: Thing[]
+    awesomeThings: Thing[];
+    data:any;
 
-    constructor(awesomeThings: Thing[]) {
+    constructor($scope,awesomeThings: Thing[],public $firebaseObject){
       this.awesomeThings = awesomeThings;
+      var ref = new Firebase("https://popping-heat-3530.firebaseio.com/");
+      $scope.data = $firebaseObject(ref);
+      $scope.data.$bindTo($scope, "data");
+
     }
 
     static resolve = {

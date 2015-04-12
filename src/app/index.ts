@@ -1,12 +1,17 @@
 'use strict';
 
 module fireboot {
-  var module = angular.module('fireboot', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ui.router', 'ngMaterial']);
-
-  export function Controller(clazz: any) {
-    console.log('@Controller', clazz);
-    module.controller(clazz.$componentName, clazz);
-  }
+  var module = angular.module('fireboot',
+    [
+     'ngAnimate',
+     'ngCookies',
+     'ngTouch',
+     'ngSanitize',
+     'ui.router',
+     'ngMaterial',
+     'firebase'
+     ]
+  );
 
   export function Component(directive: angular.IDirective) {
 
@@ -83,7 +88,7 @@ module fireboot {
         state.resolve = clazz.resolve;
 
         $stateProvider.state(state);
-        console.log('@State',state);
+        console.log('@State', state);
       });
 
     }
