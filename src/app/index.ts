@@ -5,7 +5,7 @@ module fireboot {
 
   export function Controller(clazz: any) {
     console.log('@Controller', clazz);
-    module.controller(clazz.name, clazz);
+    module.controller(clazz.$componentName, clazz);
   }
 
   export function Component(directive: angular.IDirective) {
@@ -13,9 +13,9 @@ module fireboot {
     return function(clazz) {
       console.log('@Component', clazz);
 
-      module.controller(clazz.name, clazz);
+      module.controller(clazz.$componentName, clazz);
 
-      directive.controller = className(clazz.name);
+      directive.controller = className(clazz.$componentName);
       directive.controllerAs = instanceName(directive.controller);
 
       if (!directive.restrict) {
@@ -69,9 +69,9 @@ module fireboot {
   export function State(state: angular.ui.IState) {
     return function(clazz) {
       console.log('@Component', clazz);
-      module.controller(clazz.name, clazz);
+      module.controller(clazz.$componentName, clazz);
 
-      var controllerName = clazz.name;
+      var controllerName = clazz.$componentName;
 
       module
         .config(function($stateProvider: angular.ui.IStateProvider) {
